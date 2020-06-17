@@ -3,7 +3,7 @@
 Created on Tue Mar 10 17:38:46 2020
 @author: Chu Xin-Yi
 """
-w = open('F:/HZAU/手性起源/RNA相关/Ast2/result.txt','w')
+w = open('result.txt','w')
 
 #initial input 
 psu_R = 10**10           # R-PSU: Peptide synthesis unit don’t distinguish substrate chirality.
