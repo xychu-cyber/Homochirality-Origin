@@ -6,15 +6,15 @@ Created on Tue Mar 10 17:38:46 2020
 w = open('result.txt','w')
 
 #initial input 
-psu_R = 10**10           # R-PSU: Peptide synthesis unit don’t distinguish substrate chirality.
-psu_D = 1               # D-PSU: Peptide synthesis unit prefer D-amino acids as substrates.
-psu_L = 1               # L-PSU: Peptide synthesis unit prefer L-amino acids as substrates.
-comx_R_R = 0            # R-complex: Complex of R-PSU and R-peptide.
-comx_R_D = 0            # R-complex: Complex of R-PSU and D-peptide.
-comx_R_L = 0            # R-complex: Complex of R-PSU and L-peptide.
-comx_D_D = 0            # D-complex: Complex of D-PSU and D-peptide.
-comx_L_L = 0            # L-complex: Complex of L-PSU and L-peptide.
-pep_R = 0               # R/D-peptide:Peptides composed of mixed L/D-amino acids.
+psu_R = 10**10          # R-PSU: Peptide synthesis unit doesn’t distinguish substrate chirality.
+psu_D = 1               # D-PSU: Peptide synthesis unit prefers D-amino acids as substrates.
+psu_L = 1               # L-PSU: Peptide synthesis unit prefers L-amino acids as substrates.
+comx_R_R = 0            # Complex of R-PSU and R-peptide.
+comx_R_D = 0            # Complex of R-PSU and D-peptide.
+comx_R_L = 0            # Complex of R-PSU and L-peptide.
+comx_D_D = 0            # Complex of D-PSU and D-peptide.
+comx_L_L = 0            # Complex of L-PSU and L-peptide.
+pep_R = 0               # R-peptide:Peptides composed of mixed L/D-amino acids.
 pep_D = 0               # D-peptide: Peptides composed entirely of L-amino acids.
 pep_L = 0               # L-peptide: Peptides composed entirely of L-amino acids.
 
@@ -25,10 +25,10 @@ Psyn_DD = 0.5	         # Probability of D-PSU synthesize D-peptide.
 Psyn_LL = 0.5	         # Probability of L-PSU synthesize L-peptide.
 Pbind_R = 0.01	         # Probability of PSU being bound by its synthesized R-peptide.
 Pbind_D = 0.01	         # Probability of PSU being bound by its synthesized D-peptide.
-Pbind_L = 0.03         # Probability of PSU being bound by its synthesized L-peptide.
+Pbind_L = 0.03          # Probability of PSU being bound by its synthesized L-peptide.
 Pdeg_psu = 0.5	         # Probability of PSU degradation.
 Pdeg_com = 0.25	      # Probability of PSU-pepetide complex degradation.
-Prep = 1	            # Probability of PSU replication.
+Prep = 1	               # Probability of PSU replication.
 
 #Records of every step  
 rpsu_R = []
@@ -37,8 +37,8 @@ rpsu_L = []
 rpep_R = []
 rpep_D = []
 rpep_L = []
-ee_psu = []             # (psu_L)/(psu_L+psu_R+psu_D)
-ee_pep = []             # (pep_L)/(pep_L+pep_R+psu_R)
+ee_psu = []             # ratio of L-PSU: (psu_L)/(psu_L+psu_R+psu_D)
+ee_pep = []             # ratio of L-peptide: (pep_L)/(pep_L+pep_R+psu_R)
 
 # simulation steps
 i = 12000                 # number of simulation steps 
@@ -72,8 +72,8 @@ while i > 0:
     rpep_R.append(str(pep_R))
     rpep_D.append(str(pep_D))
     rpep_L.append(str(pep_L))
-    ee_psu.append(str((psu_L)/(psu_L + psu_R + psu_D)))      # the ratio of L-PSU in all PSU
-    ee_pep.append(str((pep_L)/(pep_L + pep_R + pep_D)))      # the ratio of L-pep in all peptide
+    ee_psu.append(str((psu_L)/(psu_L + psu_R + psu_D)))      
+    ee_pep.append(str((pep_L)/(pep_L + pep_R + pep_D)))      
     i -= 1
     
 #print((psu_L)/(psu_L+psu_R),(pep_L)/(pep_L+pep_R))
